@@ -112,8 +112,13 @@ super + ctrl + shift + space
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
+# change gap size
 super + {equal,minus} 
 	bspc config window_gap $(( $(bspc config window_gap) {+,-} 5 ))
+
+# reset gap size
+super + shift + equal
+	bspc config window_gap 37
 
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
@@ -150,3 +155,19 @@ XF86MonBrightnessUp
 # Lowers Brightness
 XF86MonBrightnessDown
 	light -U 5
+
+# Start Forge
+super + shift + f
+	/home/josh/forge.sh
+
+# Start Sling
+super + shift + s
+	cd /home/josh/sling; ./sling; cd 
+
+# Set keyboard to Colemak
+shift + ctrl + shift
+	setxkbmap us -variant colemak
+
+# Set keyboard to Qwerty
+super + shift + shift
+	setxkbmap us -variant ,,qwerty
