@@ -1,0 +1,39 @@
+@namespace xul url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#content browser
+{
+margin-right:-17px!important;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+}
+:root:-moz-lwtheme-brighttext {
+  --chrome-background-color: #424242 !important;
+  --chrome-color: #8f8f8f !important;
+  --chrome-secondary-background-color: #363636 !important;
+  --toolbox-border-bottom-color: #2e2e2e !important;
+}
+.tabbrowser-tab[visuallyselected="true"]:-moz-lwtheme {
+    color: #dddddd !important;
+}
+
+[data-identity-color="blue"] {
+  --identity-tab-color: #7193F7 !important;
+  --identity-icon-color: #7193F7 !important;
+}
+[data-identity-color="green"] {
+  --identity-tab-color: #71F78A !important;
+  --identity-icon-color: #71F78A !important;
+}
+[data-identity-color="orange"] {
+  --identity-tab-color: #F2DE73 !important;
+  --identity-icon-color: #F2DE73 !important;
+}
+[data-identity-color="pink"] {
+  --identity-tab-color: #F771E7 !important;
+  --identity-icon-color: #F771E7 !important;
+}
+:root:-moz-lwtheme {
+  --tab-line-color: none !important;
+}
