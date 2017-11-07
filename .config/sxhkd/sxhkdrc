@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	dbus-launch mate-terminal --hide-menubar
+	mate-terminal -e fish --hide-menubar
 
 # program launcher
 super + d
@@ -155,19 +155,3 @@ XF86MonBrightnessUp
 # Lowers Brightness
 XF86MonBrightnessDown
 	light -U 5
-
-# Start Forge
-super + shift + f
-	/home/josh/forge.sh
-
-# Start Sling
-super + shift + s
-	cd /home/josh/sling; ./sling; cd 
-
-# Set keyboard to Colemak
-shift + ctrl + shift
-	setxkbmap us -variant colemak
-
-# Set keyboard to Qwerty
-super + shift + shift
-	setxkbmap us -variant ,,qwerty
