@@ -9,8 +9,6 @@
 
 
 [colors]
-#background = #B4051824
-#background = #00000F46
 background = #B4260900
 foreground = ${xrdb:color7}
 foreground-alt = #555
