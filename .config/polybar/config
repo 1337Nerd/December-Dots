@@ -9,7 +9,9 @@
 
 
 [colors]
-background = #5a071A2A
+#background = #B4051824
+#background = #00000F46
+background = #B4260900
 foreground = ${xrdb:color7}
 foreground-alt = #555
 alert = #bd2c40
@@ -81,7 +83,7 @@ label-occupied = %index%
 label-occupied-padding = 2
 label-occupied-underline = ${colors.foreground}
 
-label-urgent = %index%!
+label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -95,6 +97,12 @@ content = josh@WheatDOS
 content-background = ${colors.background}
 content-foreground = ${colors.foreground}
 content-padding = 1
+
+[module/data]
+type = internal/network
+interface = wlp2s0
+interval = 1
+label-connected = %upspeed:9% %downspeed:9%
 
 [module/memory]
 type = internal/memory
@@ -136,7 +144,7 @@ format-prefix-foreground = #5b
 type = custom/script
 interval = 90
 format = <label>
-exec =  /home/josh/.config/polybar/test2
+exec =  python /home/josh/.config/polybar/test2
 label = "%output%"
 
 [module/weather2]
@@ -211,7 +219,7 @@ ramp-capacity-foreground = ${colors.green}
 type = internal/date
 interval = 1
 
-date = " %m/%d"
+date = "%m/%d"
 
 time = %I:%M %p
 time-alt = %I:%M:%S %p
