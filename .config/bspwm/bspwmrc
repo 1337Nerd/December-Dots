@@ -14,10 +14,10 @@ bspc config click_to_focus       true
 bspc config urgent_border_color "#72003e"
 
 xsetroot -cursor_name left_ptr &
-compton --config ~/.config/compton.conf -b &
 redshift -l 39.866397:-83.074054 &
 wal -R
 polybar dracaether &
+xss-lock -- lock &
 compton --config ~/compton.conf -b
 
 source "$HOME/.cache/wal/colors.sh"
