@@ -150,8 +150,16 @@ super + shift + e
 
 # Raises brightness
 XF86MonBrightnessUp
-	light -A 5
+	light -A 3
 
 # Lowers Brightness
 XF86MonBrightnessDown
-	light -U 5
+	light -U 3
+
+# Start Forge
+super + shift + f
+	/home/josh/forge.sh
+
+# Start Sling
+super + shift + s
+	cd /home/josh/sling; ./sling; cd 
