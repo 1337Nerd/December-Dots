@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 sxhkd &
 
@@ -15,12 +15,15 @@ bspc config urgent_border_color "#72003e"
 
 xsetroot -cursor_name left_ptr &
 redshift -l 39.866397:-83.074054 &
-wal -R
-polybar dracaether &
-xss-lock -- lock &
-compton --config ~/compton.conf -b
+~/gif-soup ~/Downloads/GraciousFloweryCrownofthornsstarfish-max-14mb.gif &
+btops &
+polybar main &
+light -S 8 &
+xss-lock -- lock
 
-source "$HOME/.cache/wal/colors.sh"
+xrdb -I$HOME ~/.Xresources
+
+source "$HOME/.Xresources"
 bspc config normal_border_color "$color1"
 bspc config active_border_color "$color2"
 bspc config focused_border_color "$color15"
