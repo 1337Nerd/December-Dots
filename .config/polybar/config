@@ -73,7 +73,7 @@ ramp-signal-foreground = ${colors.alt-foreground}
 
 [module/memory]
 type = internal/memory
-label= %gb_used% GB
+label= %gb_used%
 format-prefix = "%{T2} %{T-}"
 format-prefix-foreground = ${colors.alt-foreground}
 
