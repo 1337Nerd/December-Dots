@@ -1,39 +1,172 @@
-@namespace xul url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-#content browser
-{
-margin-right:-17px!important;
-    overflow-y:scroll;
-    overflow-x:hidden;
+/* Hide main tabs toolbar */
+#TabsToolbar {
+    visibility: collapse;
 }
 
+/* Sidebar min and max width removal */
+#sidebar {
+    max-width: none !important;
+    min-width: 0px !important;
 }
-:root:-moz-lwtheme-brighttext {
-  --chrome-background-color: #424242 !important;
-  --chrome-color: #8f8f8f !important;
-  --chrome-secondary-background-color: #363636 !important;
-  --toolbox-border-bottom-color: #2e2e2e !important;
+/* Hide splitter, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
+    display: none !important;
 }
-.tabbrowser-tab[visuallyselected="true"]:-moz-lwtheme {
-    color: #dddddd !important;
+/* Hide sidebar header, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+    visibility: collapse;
 }
 
-[data-identity-color="blue"] {
-  --identity-tab-color: #7193F7 !important;
-  --identity-icon-color: #7193F7 !important;
+/* Shrink sidebar until hovered, when using Tree Style Tab. */
+:root {
+    --thin-tab-width: 30px;
+    --wide-tab-width: 200px;
 }
-[data-identity-color="green"] {
-  --identity-tab-color: #71F78A !important;
-  --identity-icon-color: #71F78A !important;
+#sidebar-box:not([sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]) {
+    min-width: var(--wide-tab-width) !important;
+    max-width: none !important;
 }
-[data-identity-color="orange"] {
-  --identity-tab-color: #F2DE73 !important;
-  --identity-icon-color: #F2DE73 !important;
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+    position: relative !important;
+    transition: all 300ms !important;
+    min-width: var(--thin-tab-width) !important;
+    max-width: var(--thin-tab-width) !important;
 }
-[data-identity-color="pink"] {
-  --identity-tab-color: #F771E7 !important;
-  --identity-icon-color: #F771E7 !important;
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]:hover {
+    transition: all 300ms !important;
+    min-width: var(--wide-tab-width) !important;
+    max-width: var(--wide-tab-width) !important;
+    margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
 }
-:root:-moz-lwtheme {
-  --tab-line-color: none !important;
+
+/*
+ * Originally from:
+ * http://forums.mozillazine.org/viewtopic.php?p=14404121#p14404121
+ */
+
+#urlbar {
+  position: relative;
+  z-index: 1;
+}
+
+#identity-box:after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: white;
+  opacity: 0.2;
+}
+
+
+/* There is also grantedPermissions, but irrelevant. */
+
+/* about:about */
+#urlbar[pageproxystate='valid'] #identity-box.unknownIdentity:after {
+  background: #ff0039; /* Firefox Red 50 */
+}
+
+/* about:config */
+#urlbar[pageproxystate='valid'] #identity-box.chromeUI:after {
+  background: #0a84ff; /* Firefox Blue 50 */
+}
+
+/* uBlock Origin Dashboard */
+#urlbar[pageproxystate='valid'] #identity-box.extensionPage:after {
+  background: #45a1ff; /* Firefox Blue 40 */
+}
+
+/* https://www.github.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.verifiedIdentity:after{
+  background: #058b00; /* Firefox Green 70 */
+}
+
+/* https://www.google.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.verifiedDomain:after{
+  background: #12bc00; /* Firefox Green 60 */
+}
+
+/* https://mixed-script.badssl.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.mixedActiveBlocked:after {
+  background: #30e60b; /* Firefox Green 50 */
+}
+
+/* https://mixed.badssl.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContent:after {
+  background: #d7b600; /* Firefox Yellow 60 */
+}
+
+/* https://very.badssl.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.mixedDisplayContentLoadedActiveBlocked:after {
+  background: #d7b600; /* Firefox Yellow 60 */
+}
+
+/* https://self-signed.badssl.com/ but add certificate exception */
+#urlbar[pageproxystate='valid'] #identity-box.certUserOverridden:after {
+  background: #ffe900; /* Firefox Yellow 50 */
+}
+
+/* Don't know an example for this */
+#urlbar[pageproxystate='valid'] #identity-box.weakCipher:after {
+  background: #a47f00; /* Firefox Yellow 70 */
+}
+
+/* https://mixed-script.badssl.com/ but disable protection */
+#urlbar[pageproxystate='valid'] #identity-box.mixedActiveContent:after {
+  background: #d70022;  /* Firefox Red 60 */
+}
+
+/* http://http-login.badssl.com/ */
+#urlbar[pageproxystate='valid'] #identity-box.insecureLoginForms:after {
+  background: #a4000f;  /* Firefox Red 70 */
+}
+
+#appMenu-fxa-container, #appMenu-fxa-container + toolbarseparator {
+    display: none !important;
+}
+ 
+#pageActionButton{
+    display: none !important;
+}
+ 
+#page-action-buttons{
+    display: none !important;
+}
+ 
+.urlbar-history-dropmarker{
+    display: none !important;
+}
+ 
+.tabs-newtab-button{
+    margin: -8px 0 0px -3px !important;
+}
+ 
+#urlbar{
+    text-align: center !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+    background-color: #454545 !important;
+    border: none !important;
+    min-height: 18px !important;
+    margin-top: -3px !important;
+    margin-bottom: -3px !important;
+}
+ 
+.customization-target{
+    max-height: 22px !important;
+}
+ 
+#nav-bar{
+    max-height: 27px !important;
+    padding: none !important;
+}
+  
+.tab-content{
+    max-height: 22px !important;
 }
