@@ -164,6 +164,10 @@ browser[type="content-primary"], tabbrowser tabpanels, #appcontent > #content {
   z-index: 1;
 }
 
+#urlbar-container {
+    margin-left: 6px !important;
+}
+
 #identity-box:after {
   content: '';
   position: absolute;
@@ -239,3 +243,12 @@ browser[type="content-primary"], tabbrowser tabpanels, #appcontent > #content {
 #urlbar[pageproxystate='valid'] #identity-box.insecureLoginForms:after {
   background: #a4000f;  /* Firefox Red 70 */
 }
+
+/* Hide Hamburger Button */
+#PanelUI-menu-button {
+    visibility: collapse !important;
+}
+
+/* Hide Close Button !=hover */
+.tabbrowser-tab:not([pinned]):not(:hover) .tab-close-button { visibility: collapse !important; }
+.tabbrowser-tab:not([pinned]):hover .tab-close-button { visibility: visible !important; display: block !important; }
