@@ -1,29 +1,28 @@
-#!/bin/sh
+#!/bin/bash
 
-i3lock                      \
-\
---textcolor=eee8d5ff        \
---timecolor=eee8d5ff        \
---datecolor=eee8d5ff        \
-\
---insidecolor=073642ff      \
---ringcolor=22ccddff        \
---keyhlcolor=458588ff       \
---bshlcolor=cc241dff        \
---insidevercolor=458588ff   \
---insidewrongcolor=cc241dff \
---ringvercolor=83a598ff     \
---ringwrongcolor=fb4934ff   \
---line-uses-inside          \
-\ #--linecolor=665c54ff        \
-\
---screen 0                  \
---blur 5                    \
---clock                     \
---indicator                 \
-\
---datestr="%A, %b %d"       \
---timestr="%H:%M"           \
-\
---wrongtext="Nope!"         \
---show-failed-attempts
+rectangles=" "
+
+SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
+for RES in $SR; do
+  SRA=(${RES//[x+]/ })
+  CX=$((${SRA[2]} + 37))
+  CY=$((${SRA[1]} - 37))
+  rectangles+="rectangle $CX,$CY $((CX+300)),$((CY-80)) "
+done
+
+TMPBG=/tmp/screen.png
+ffmpeg -loglevel quiet -y -s 1366x768 -f x11grab -i $DISPLAY -vframes 1 -vf "gblur=sigma=06" $TMPBG && convert $TMPBG -draw "fill black fill-opacity 0.4 $rectangles" $TMPBG
+
+i3lock \
+  -i $TMPBG \
+  --timepos="x-78:h-ch+23" \
+  --datepos="tx+24:ty+25" \
+  --clock --datestr "Type password to unlock..." \
+  --insidecolor=00000000 --ringcolor=ffffffff --line-uses-inside \
+  --keyhlcolor=d23c3dff --bshlcolor=d23c3dff --separatorcolor=00000000 \
+  --insidevercolor=fecf4dff --insidewrongcolor=d23c3dff \
+  --ringvercolor=ffffffff --ringwrongcolor=ffffffff --indpos="x+292:h-77" \
+  --radius=20 --ring-width=3 --veriftext="" --wrongtext="" \
+  --textcolor="ffffffff" --timecolor="ffffffff" --datecolor="ffffffff"
+
+rm /tmp/screen.png
