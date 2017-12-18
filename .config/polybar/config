@@ -5,7 +5,7 @@ alt-foreground = #789
 bordercolor = #2cd
 
 [bar/main]
-monitor = LVDS-1
+monitor = eDP-1
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -23,7 +23,7 @@ font-2 = fontawesome:pixelsize=12;3
 
 modules-left = bspwm weather
 modules-center = date
-modules-right = wifi memory cpu volume battery
+modules-right = vpncheck wifi memory cpu volume battery
 
 tray-position = right
 tray-transparent = false
@@ -61,9 +61,16 @@ type = internal/date
 label = %date%
 date = "%a, %B %d %I:%M:%S"
 
+[module/vpncheck]
+type = custom/script
+exec = pgrep openvpn
+label = vpn
+format-prefix = " "
+format-prefix-foreground = ${colors.alt-foreground}
+
 [module/wifi]
 type = internal/network
-interface = wlp2s0
+interface = wlp1s0
 
 format-connected = <ramp-signal> <label-connected>
 label-connected = %local_ip%
@@ -100,13 +107,8 @@ battery = BAT0
 adapter = ADP1
 
 format-charging =  <animation-charging> <label-charging>
-label-charging = %percentage%%
-
 format-discharging =  <ramp-capacity> <label-discharging>
-label-discharging = %percentage%%
-
 format-full = <ramp-capacity> <label-full>
-label-full = %percentage%%
 
 ramp-capacity-foreground = ${colors.alt-foreground}
 ramp-capacity-0 = 
