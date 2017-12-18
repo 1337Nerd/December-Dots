@@ -11,7 +11,10 @@ function fish_prompt
 end
 
 alias ...='cd ../..'
-alias update='pacaur -Syu --noconfirm; pacaur -Rns (pacaur -Qttdq) --noconfirm; pacaur -Sc --noconfirm'
+alias update='trizen -Syu --noconfirm; trizen -Rns (sudo pacman -Qttdq) --noconfirm; trizen -Sc --noconfirm'
+alias moreupdate='trizen -Syu --noconfirm; trizen -Rns (sudo pacman -Qttdq) --noconfirm; trizen -Scc; rm -rf /home/josh/.cache/*'
+alias restart='trizen -Syu --noconfirm; trizen -Rns (sudo pacman -Qttdq) --noconfirm; trizen -Scc; rm -rf /home/josh/.cache/*; sudo reboot now'
+alias pacman='sudo pacman'
 
 function configure_pager
 	set -gx LESS_TERMCAP_mb \e"[01;31m" 
