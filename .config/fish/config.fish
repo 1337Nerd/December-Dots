@@ -12,8 +12,6 @@ end
 
 alias ...='cd ../..'
 alias update='trizen -Syu --noconfirm; trizen -Rns (sudo pacman -Qttdq) --noconfirm; trizen -Sc --noconfirm'
-alias moreupdate='trizen -Syu --noconfirm; trizen -Rns (sudo pacman -Qttdq) --noconfirm; trizen -Scc; rm -rf /home/josh/.cache/*'
-alias restart='trizen -Syu --noconfirm; trizen -Rns (sudo pacman -Qttdq) --noconfirm; trizen -Scc; rm -rf /home/josh/.cache/*; sudo reboot now'
 alias pacman='sudo pacman'
 
 function configure_pager
