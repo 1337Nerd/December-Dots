@@ -15,10 +15,10 @@ bspc config urgent_border_color "#72003e"
 
 xsetroot -cursor_name left_ptr &
 redshift -l 39.866397:-83.074054 &
-~/gif-soup ~/Downloads/GraciousFloweryCrownofthornsstarfish-max-14mb.gif &
+feh --bg-fill ~/Downloads/wallhaven-242954.png
 btops &
 polybar main &
-light -S 8 &
+light -S 1 &
 xss-lock -- lock
 
 xrdb -I$HOME ~/.Xresources
