@@ -162,6 +162,7 @@ browser[type="content-primary"], tabbrowser tabpanels, #appcontent > #content {
 #urlbar {
   position: relative;
   z-index: 1;
+  border-radius: 2em !important;
 }
 
 #urlbar-container {
